@@ -23,8 +23,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends BasicActivity {
-    FirebaseAuth auth= FirebaseAuth.getInstance();
+    // FirebaseAuth auth= FirebaseAuth.getInstance();  // 파이어베이스 로그아웃 할 경우 환경설정
     private static final String TAG = "MainActivity";
+    private  long backBtnTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +37,30 @@ public class MainActivity extends BasicActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public void onBackPressed() {
+        super.onBackPressed();                                      // 뒤로가기 및 종료
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid()); // 액티비티를 모두 죽인다. 프로세스 강제 종료
+        System.exit(1);
+    }
+
+    // 로그 아웃을 만들기 위한 메뉴를 생성
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {   // 메뉴를 만들어주는 코드
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    // 메뉴 안에 옵션을 이용한 LogOut 구현
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {     // 메뉴 안에 옵션 선택을 이용한 코드
 
         switch (item.getItemId()) {
 
             case R.id.logout: {
-                FirebaseAuth.getInstance().signOut();
-                myStartActivity(LoginActivity.class);
-
+                FirebaseAuth.getInstance().signOut(); // 파이어베이스 로그 아웃 구현 코드
+                myStartActivity(LoginActivity.class); // 로그아웃 할 경우 어느 액티비티로 이동할지 선언
             }
         }
         return super.onOptionsItemSelected(item);
@@ -136,10 +146,9 @@ public class MainActivity extends BasicActivity {
         }
     }
 
-    private void myStartActivity(Class c) {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivityForResult(intent, 1);
-        finish();
+    private void myStartActivity(Class c) {                        // intent 액티비티 이것을 이용해 화면전환을 사용
+        Intent intent = new Intent(this, c);        // 명시적 intent 사용 어느 액티비로 갈지 선언
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);          // 뒤로가기 버튼을 사용하면 지금 사용하는 액티비티를 초기화
+        startActivityForResult(intent, 1);            // 다른 액티비티 호출
     }
 }

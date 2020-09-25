@@ -2,10 +2,11 @@ package com.example.sns_project.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
 
 import com.example.sns_project.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,9 +35,6 @@ public class SignUpActivity extends BasicActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -85,6 +83,7 @@ public class SignUpActivity extends BasicActivity {
             showToast(SignUpActivity.this, "이메일 또는 비밀번호를 입력해 주세요.");
         }
     }
+
 
     private void myStartActivity(Class c) {
         Intent intent = new Intent(this, c);
