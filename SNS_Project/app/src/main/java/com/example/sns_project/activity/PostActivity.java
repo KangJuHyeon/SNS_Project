@@ -6,19 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
 import com.example.sns_project.FirebaseHelper;
 import com.example.sns_project.PostInfo;
 import com.example.sns_project.R;
 import com.example.sns_project.listener.OnPostListener;
-import com.example.sns_project.view.ContentsItemView;
 import com.example.sns_project.view.ReadContentsVIew;
-
-import static com.example.sns_project.Util.INTENT_PATH;
 
 public class PostActivity extends BasicActivity {
     private PostInfo postInfo;

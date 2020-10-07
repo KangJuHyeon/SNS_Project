@@ -75,6 +75,7 @@ public class WritePostActivity extends BasicActivity {
         findViewById(R.id.check).setOnClickListener(onClickListener);
         findViewById(R.id.image).setOnClickListener(onClickListener);
         findViewById(R.id.video).setOnClickListener(onClickListener);
+        findViewById(R.id.location).setOnClickListener(onClickListener);
         findViewById(R.id.imageModify).setOnClickListener(onClickListener);
         findViewById(R.id.videoModify).setOnClickListener(onClickListener);
         findViewById(R.id.delete).setOnClickListener(onClickListener);
@@ -143,7 +144,7 @@ public class WritePostActivity extends BasicActivity {
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v) {   // 게시물 만들때 확인, 이미지, 비디오 버튼이 있다.
             switch (v.getId()) {
                 case R.id.check:
                     storageUpload();
@@ -154,7 +155,10 @@ public class WritePostActivity extends BasicActivity {
                 case R.id.video:
                     myStartActivity(GalleryActivity.class, GALLERY_VIDEO, 0);
                     break;
-                case R.id.buttonsBackgroundLayout:
+                case R.id.location:
+                    myStartActivity(SearchViewActivity.class, GALLERY_VIDEO, 0);
+                    break;
+                case R.id.buttonsBackgroundLayout:   // 이 버튼은 사진이 올라가고 사진을 클릭하면 카드뷰를 통해 이미지수정, 비디오 수정, 삭제 등이 뜬다.
                     if (buttonsBackgroundLayout.getVisibility() == View.VISIBLE) {
                         buttonsBackgroundLayout.setVisibility(View.GONE);
                     }
@@ -170,7 +174,7 @@ public class WritePostActivity extends BasicActivity {
                 case R.id.delete:
                     final View selectedView = (View) selectedImageVIew.getParent();
                     String path = pathList.get(parent.indexOfChild(selectedView) - 1);
-                    if(isStorageUrl(path)){
+                    if(isStorageUrl(path)){             // Firebase storage 에서 우리가 올린 이미지 파일, 폴더를 다 삭제한다.
                         StorageReference desertRef = storageRef.child("posts/" + postInfo.getId() + "/" + storageUrlToName(path));
                         desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -229,9 +233,9 @@ public class WritePostActivity extends BasicActivity {
                         }
                     } else if (!isStorageUrl(pathList.get(pathCount))) {
                         String path = pathList.get(pathCount);
-                        successCount++;
+                        successCount++;              //
                         contentsList.add(path);
-                        if(isImageFile(path)){
+                        if(isImageFile(path)){       // 게시물을 올릴때 formatList를 통해 만들어준다 image, video, text를 올려준다.
                             formatList.add("image");
                         }else if (isVideoFile(path)){
                             formatList.add("video");
@@ -239,14 +243,14 @@ public class WritePostActivity extends BasicActivity {
                             formatList.add("text");
                         }
                         String[] pathArray = path.split("\\.");
-                        final StorageReference mountainImagesRef = storageRef.child("posts/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
+                        final StorageReference mountainImagesRef = storageRef.child("posts/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]); // 이부분에 length +1 하게되면 이미지 수정에서 이미지가 하나 추가된다.
                         try {
                             InputStream stream = new FileInputStream(new File(pathList.get(pathCount)));
                             StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("index", "" + (contentsList.size() - 1)).build();
                             UploadTask uploadTask = mountainImagesRef.putStream(stream, metadata);
                             uploadTask.addOnFailureListener(new OnFailureListener() {
                                 @Override
-                                public void onFailure(@NonNull Exception exception) {
+                                public void onFailure(@NonNull Exception exception) {    // 통신에 실패했을경우 이쪽에서 예외처리 한다.
                                 }
                             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -336,9 +340,9 @@ public class WritePostActivity extends BasicActivity {
         }
     }
 
-    private void myStartActivity(Class c, int media, int requestCode) {
+    private void myStartActivity(Class c, int media, int requestCode) { // int media, int requestCode 를 통해 데이터를 전달한다는 함수를 선언했다.
         Intent intent = new Intent(this, c);
-        intent.putExtra(INTENT_MEDIA, media);
+        intent.putExtra(INTENT_MEDIA, media);                           // 화면을 전환하고 Utill 액티비티에서 media 값을 보낸다 버튼을 클릭하면
         startActivityForResult(intent, requestCode);
     }
 }
