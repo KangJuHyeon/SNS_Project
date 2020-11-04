@@ -35,7 +35,7 @@ public class LoginActivity extends BasicActivity {
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v) {  // 로그인, 회원가입, 비밀번호 재설정 버튼 설정
             switch (v.getId()) {
                 case R.id.loginButton:
                     login();
@@ -54,8 +54,8 @@ public class LoginActivity extends BasicActivity {
         String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
 
-        if (email.length() > 0 && password.length() > 0) {
-            final RelativeLayout loaderLayout = findViewById(R.id.loaderLyaout);
+        if (email.length() > 0 && password.length() > 0) {                        // 이메일 또는 비밀번호 값이 0 이상일경우 true
+            final RelativeLayout loaderLayout = findViewById(R.id.loaderLyaout);  // 값을 넣지않거나 0 이하일 경우 예외처리 메세지가 뜬다.
             loaderLayout.setVisibility(View.VISIBLE);
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -67,7 +67,7 @@ public class LoginActivity extends BasicActivity {
                                 showToast(LoginActivity.this, "로그인에 성공하였습니다.");
                                 myStartActivity(MainActivity.class);
                             } else {
-                                if (task.getException() != null) {
+                                if (task.getException() != null) {            // 예외처리부분
                                     showToast(LoginActivity.this, task.getException().toString());
                                 }
                             }

@@ -39,7 +39,7 @@ public class SignUpActivity extends BasicActivity {
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v) {          // 회원가입 및 로그인 버튼 구현
             switch (v.getId()){
                 case R.id.signUpButton:
                     signUp();

@@ -142,6 +142,8 @@ public class WritePostActivity extends BasicActivity {
         }
     }
 
+
+
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {   // 게시물 만들때 확인, 이미지, 비디오 버튼이 있다.
@@ -156,7 +158,7 @@ public class WritePostActivity extends BasicActivity {
                     myStartActivity(GalleryActivity.class, GALLERY_VIDEO, 0);
                     break;
                 case R.id.location:
-                    myStartActivity(SearchViewActivity.class, GALLERY_VIDEO, 0);
+                    myStartActivity(SearchViewActivity.class, 0, 0);
                     break;
                 case R.id.buttonsBackgroundLayout:   // 이 버튼은 사진이 올라가고 사진을 클릭하면 카드뷰를 통해 이미지수정, 비디오 수정, 삭제 등이 뜬다.
                     if (buttonsBackgroundLayout.getVisibility() == View.VISIBLE) {
@@ -208,6 +210,7 @@ public class WritePostActivity extends BasicActivity {
             }
         }
     };
+
 
     private void storageUpload() {
         final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
@@ -345,4 +348,5 @@ public class WritePostActivity extends BasicActivity {
         intent.putExtra(INTENT_MEDIA, media);                           // 화면을 전환하고 Utill 액티비티에서 media 값을 보낸다 버튼을 클릭하면
         startActivityForResult(intent, requestCode);
     }
+
 }

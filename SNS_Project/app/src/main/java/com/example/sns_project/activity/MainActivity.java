@@ -36,6 +36,7 @@ public class MainActivity extends BasicActivity {
         init();
     }
 
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();                                      // 뒤로가기 및 종료

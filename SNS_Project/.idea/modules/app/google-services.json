@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "354682976395",
-    "firebase_url": "https://snsproject-6a4bf.firebaseio.com",
-    "project_id": "snsproject-6a4bf",
-    "storage_bucket": "snsproject-6a4bf.appspot.com"
+    "project_number": "894386902929",
+    "firebase_url": "https://sns-project-1fc4b.firebaseio.com",
+    "project_id": "sns-project-1fc4b",
+    "storage_bucket": "sns-project-1fc4b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:354682976395:android:983ec1976b2ec191cd7c8e",
+        "mobilesdk_app_id": "1:894386902929:android:97816dfb3db4612e306c30",
         "android_client_info": {
           "package_name": "com.example.sns_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "354682976395-9guhtmjdemnvhmv2hcpobsrqsnllijr0.apps.googleusercontent.com",
+          "client_id": "894386902929-iha3fac93j37mlvgv2sslaqfn3hn5lih.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.sns_project",
@@ -23,20 +23,49 @@
           }
         },
         {
-          "client_id": "354682976395-r9jgmvmlometgmftmv4lssgiritpfife.apps.googleusercontent.com",
+          "client_id": "894386902929-um2b31akjbl1q9c8kp1vqrr7ufo55kb6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAPwccOy8b9rM7hfPZVZt0_tw8JyKI80Lk"
+          "current_key": "AIzaSyC9yNqzqh5ZbPHyGcodsXemEivRH3cNYyk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "354682976395-r9jgmvmlometgmftmv4lssgiritpfife.apps.googleusercontent.com",
+              "client_id": "894386902929-um2b31akjbl1q9c8kp1vqrr7ufo55kb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894386902929:android:f7969b5d623431db306c30",
+        "android_client_info": {
+          "package_name": "com.example.sns_project2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894386902929-um2b31akjbl1q9c8kp1vqrr7ufo55kb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9yNqzqh5ZbPHyGcodsXemEivRH3cNYyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894386902929-um2b31akjbl1q9c8kp1vqrr7ufo55kb6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
