@@ -75,7 +75,6 @@ public class WritePostActivity extends BasicActivity {
         findViewById(R.id.check).setOnClickListener(onClickListener);
         findViewById(R.id.image).setOnClickListener(onClickListener);
         findViewById(R.id.video).setOnClickListener(onClickListener);
-        findViewById(R.id.location).setOnClickListener(onClickListener);
         findViewById(R.id.imageModify).setOnClickListener(onClickListener);
         findViewById(R.id.videoModify).setOnClickListener(onClickListener);
         findViewById(R.id.delete).setOnClickListener(onClickListener);
@@ -156,9 +155,6 @@ public class WritePostActivity extends BasicActivity {
                     break;
                 case R.id.video:
                     myStartActivity(GalleryActivity.class, GALLERY_VIDEO, 0);
-                    break;
-                case R.id.location:
-                    myStartActivity(SearchViewActivity.class, 0, 0);
                     break;
                 case R.id.buttonsBackgroundLayout:   // 이 버튼은 사진이 올라가고 사진을 클릭하면 카드뷰를 통해 이미지수정, 비디오 수정, 삭제 등이 뜬다.
                     if (buttonsBackgroundLayout.getVisibility() == View.VISIBLE) {

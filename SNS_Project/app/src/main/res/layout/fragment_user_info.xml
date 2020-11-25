@@ -73,9 +73,11 @@
                     android:layout_margin="5dp"
                     android:textSize="18dp" />
 
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
 
     <RelativeLayout
         android:id="@+id/buttonsBackgroundLayout"

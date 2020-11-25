@@ -55,8 +55,6 @@
         </activity>
         <activity android:name=".activity.PostActivity">
         </activity>
-        <activity android:name=".activity.SearchViewActivity">
-        </activity>
     </application>
 
 </manifest>
