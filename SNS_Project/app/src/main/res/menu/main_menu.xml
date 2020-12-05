@@ -6,7 +6,4 @@
     <item
         android:id="@+id/modifyButton"
         android:title="프로필 수정" />
-    <item
-        android:id="@+id/btn_revoke"
-        android:title="회원탈퇴" />
 </menu>

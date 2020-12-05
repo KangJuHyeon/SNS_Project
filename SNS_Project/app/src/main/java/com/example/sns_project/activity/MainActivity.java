@@ -34,14 +34,9 @@ public class MainActivity extends BasicActivity {
         setContentView(R.layout.activity_main);
         setToolbarTitle(getResources().getString(R.string.app_name));
 
-
         init();
     }
 
-
-    private void revokeAccess() {       // 회원 탈퇴 코드 (미완성)
-        mAuth.getCurrentUser().delete();
-    }
 
     @Override
     public void onBackPressed() {
@@ -67,18 +62,15 @@ public class MainActivity extends BasicActivity {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut(); // 파이어베이스 로그 아웃 구현 코드
                 myStartActivity(LoginActivity.class); // 로그아웃 할 경우 어느 액티비티로 이동할지 선언
+                finish();
                 break;
             case R.id.modifyButton:
                 myStartActivity(MemberInitActivity.class);
             break;
-            case R.id.btn_revoke:    // 회원 탈퇴 코드 (미완성)
-                mAuth.getCurrentUser().delete();
-                revokeAccess();
-                finishAffinity();
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     protected void onResume() {
